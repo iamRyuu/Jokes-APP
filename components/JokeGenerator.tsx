@@ -28,8 +28,6 @@ export default function Component() {
   const fetchJoke = useCallback(async () => {
     if (!selectedCategory) return;
 
-    //https://official-joke-api.appspot.com/jokes/dad/random
-
     setIsLoading(true);
     try {
       const response = await fetch(
@@ -73,14 +71,14 @@ export default function Component() {
       </div>
       <Card>
         <CardContent className="pt-6">
-          {jokes ? (
+          {jokes && jokes.length > 0 ? (
             <>
-              <p className="text-center">{jokes[0]?.setup}</p>
-              <p className="text-center">{jokes[0]?.punchline}</p>
+              <p className="text-center">{jokes[0].setup}</p>
+              <p className="text-center">{jokes[0].punchline}</p>
             </>
           ) : (
             <p className="text-center text-gray-500">
-              Select a category and click "Get Joke" to see a joke here.
+              Select a category and click &quot;Get Joke&quot; to see a joke here.
             </p>
           )}
         </CardContent>
